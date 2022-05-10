@@ -5,16 +5,20 @@ public class User {
     private String id;
     private String email;
     private String username;
+    private String phone;
+    private Long timestamp;
 
 
     public User(){
 
     }
 
-    public User(String id, String email, String username, String password) {
+    public User(String id, String email, String username, String password, String phone, Long timestamp) {
         this.id = id;
         this.email = email;
         this.username = username;
+        this.phone = phone;
+        this.timestamp = timestamp;
     }
 
     public String getId() {
@@ -41,4 +45,11 @@ public class User {
         this.username = username;
     }
 
+    public String getPhone() {return phone;}
+
+    public void setPhone(String phone) {this.phone = phone;}
+
+    public Long getTimestamp() {return timestamp;}
+
+    public void setTimestamp(Long timestamp) {this.timestamp = timestamp;}
 }
