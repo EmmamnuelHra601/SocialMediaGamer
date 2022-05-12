@@ -1,6 +1,7 @@
 package com.example.socialmediagamer.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.socialmediagamer.R;
+import com.example.socialmediagamer.activities.PostDetailActivity;
 import com.example.socialmediagamer.models.Post;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
@@ -34,6 +36,13 @@ public class PostAdapter extends FirestoreRecyclerAdapter<Post, PostAdapter.View
                 Picasso.with(context).load(post.getImage1()).into(holder.imageViewPost);
             }
         }
+        holder.viewHolder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, PostDetailActivity.class);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @NonNull
@@ -47,12 +56,14 @@ public class PostAdapter extends FirestoreRecyclerAdapter<Post, PostAdapter.View
         TextView textViewTitle;
         TextView textViewDescription;
         ImageView imageViewPost;
+        View viewHolder;
 
         public ViewHolder(View view){
             super(view);
             textViewTitle = view.findViewById(R.id.textViewTitlePostCard);
             textViewDescription = view.findViewById(R.id.textViewDescriptionPostCard);
             imageViewPost = view.findViewById(R.id.imageViewPostCard);
+            viewHolder=view;
         }
     }
 }

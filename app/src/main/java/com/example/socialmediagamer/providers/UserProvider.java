@@ -25,10 +25,6 @@ public class UserProvider {
     public Task<Void> create(User user){
        return mCollection.document(user.getId()).set(user);
     }
-    //Tal vez borrar
-    public Task <Void> update(User user){
-        Map<String, Object> map = new HashMap<>();
-        map.put("username", user.getUsername());
-        return mCollection.document(user.getId()).update(map);
-    }
+
+
 }
