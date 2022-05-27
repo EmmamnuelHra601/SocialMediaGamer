@@ -38,10 +38,6 @@ public class HomeActivity extends AppCompatActivity {
                     //FRAGMENT CHATS
                     openFragment(new ChatsFragment());
                 }
-                else if (item.getItemId() == R.id.itemFilters){
-                    //FRAGMENT FILTERS
-                    openFragment(new FiltersFragment());
-                }
                 else if(item.getItemId() == R.id.itemProfile){
                     //Fragmetno profile
                     openFragment(new ProfileFragment());

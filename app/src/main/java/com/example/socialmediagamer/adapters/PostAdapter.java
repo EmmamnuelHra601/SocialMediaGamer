@@ -16,6 +16,7 @@ import com.example.socialmediagamer.activities.PostDetailActivity;
 import com.example.socialmediagamer.models.Post;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.squareup.picasso.Picasso;
 
 public class PostAdapter extends FirestoreRecyclerAdapter<Post, PostAdapter.ViewHolder> {
@@ -29,6 +30,9 @@ public class PostAdapter extends FirestoreRecyclerAdapter<Post, PostAdapter.View
 
     @Override
     protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull Post post) {
+
+        DocumentSnapshot document = getSnapshots().getSnapshot(position);
+        final String postId = document.getId();
         holder.textViewTitle.setText(post.getTitle());
         holder.textViewDescription.setText(post.getDescription());
         if(post.getImage1()!=null){
@@ -40,6 +44,7 @@ public class PostAdapter extends FirestoreRecyclerAdapter<Post, PostAdapter.View
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, PostDetailActivity.class);
+                intent.putExtra("id",postId);
                 context.startActivity(intent);
             }
         });
